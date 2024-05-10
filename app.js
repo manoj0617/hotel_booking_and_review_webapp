@@ -44,7 +44,6 @@ app.get("/",wrapAsync((req,res)=>{
 }));
 app.get("/listing",wrapAsync(async (req,res)=>{
     let allListing=await Listing.find({});
-    console.log(allListing);
     // Listing.findByIdAndDelete('663cbc041d2f0118819e1abe');
     res.render("index.ejs",{allListing});
 }));
