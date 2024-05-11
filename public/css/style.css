@@ -84,6 +84,6 @@ body{
     height: 30vh;
 }
 .show-btns btn{
-    display: flex;
-
+    display: inline-flex;
+    width: 100%;
 }

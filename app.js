@@ -9,6 +9,7 @@ const engine =require('ejs-mate');
 const wrapAsync=require('./utils/wrapAsync.js');
 const ExpressError=require("./utils/ExpressError.js");
 const {listingSchema}=require("./schema.js");
+const Review=require('./models/review.js');
 const validateListing=(req,res,next)=>{
     let {error}=listingSchema.validate(req.body);
     if(error){
@@ -84,6 +85,17 @@ app.put("/listing/:id",wrapAsync(async (req,res)=>{
     await Listing.findByIdAndUpdate(id,req.body);
     res.redirect("/listing");
 }));
+app.post("/listing/:id/review",async (req,res)=>{
+    let {id}=req.params;
+    console.log(req.body);
+    let listing = await Listing.findById(id);
+    let newReview = new Review(req.body.review);
+    listing.review.push(newReview);
+    let data=await newReview.save();
+    await listing.save();
+    console.log(data);
+    res.redirect(`/listing/${id}`);
+});
 app.all("*",(req,res,next)=>{
     next(new ExpressError(404,"page not found"));
 });
