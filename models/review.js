@@ -7,7 +7,7 @@ const reviewSchema=mongoose.Schema({
         min:1,
         max:5,
     },
-    createdat:{
+    createdate:{
         type:Date,
         default:Date.now(),
     }
