@@ -87,3 +87,7 @@ body{
     display: inline-flex;
     width: 100%;
 }
+#map{
+    height: 400px;
+    width: 80vh;
+}
