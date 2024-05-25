@@ -86,7 +86,7 @@ app.listen(3000,()=>{
 
 
 app.get("/",(req,res)=>{
-    res.send("success");
+    res.redirect("/listing");
 });
 app.all("*",(req,res,next)=>{
     next(new ExpressError(404,"page not found"));
